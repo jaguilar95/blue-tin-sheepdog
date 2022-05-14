@@ -1,15 +1,18 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const fs = require("fs");
+const { resolve } = require("path");
+const { rejects } = require("assert");
 
 // TODO: Create an array of questions for user input
 const questions = [
   // project title
   {
     type: "input",
-    name: "project",
+    name: "title",
     message: "What is your project's name? (Required)",
-    validate: (projectInput) => {
-      if (projectInput) {
+    validate: (titleInput) => {
+      if (titleInput) {
         return true;
       } else {
         console.log("Please enter your name!");
@@ -160,21 +163,46 @@ const questions = [
   },
 ];
 
-const promptUser = () => {
+const dummy = {
+  project: "Horiseon Social Solutions Services Webpage",
+  description:
+    "The main webpage of Horiseon Social Soultion Services. Horison specializes in Search Engine Optimization, Online Reputation Management, and Social Media Marketing.",
+  installation: "None",
+  usage: "Screenshot here",
+  contributionsConfirm: false,
+  testConfirm: false,
+  license: ["MIT"],
+  userName: "jaguilar95",
+  email: "josue.aguilar1995+horiseon@gmail.com",
+  table: true,
+};
+
+// // TODO: Create a function to write README file
+function writeToFile(fileContent) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile("./dist/README.md", fileContent, (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message: "README.md created successfully!",
+      });
+    });
+  });
+}
+
+// TODO: Create a function to initialize app
+const init = () => {
   return inquirer.prompt(questions);
 };
 
-promptUser()
-  .then((answers) => console.log(answers))
-  .catch((err) => {
-    console.log(err);
-  });
+// Function call to initialize app
+// init()
+//   .then((answers) => console.log(answers))
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
+writeToFile(JSON.stringify(dummy));
