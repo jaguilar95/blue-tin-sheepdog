@@ -111,8 +111,7 @@ const questions = [
   {
     type: "list",
     name: "license",
-    message:
-      "Which licenses would you like to select for your project? (Check any that apply)",
+    message: "Which licenses would you like to select for your project?",
     choices: [
       "MIT",
       "GNU GPLv3",
@@ -129,7 +128,7 @@ const questions = [
   {
     type: "input",
     name: "userName",
-    message: "What is your GitHub username password? (Required)",
+    message: "What is your GitHub username? (Required)",
     validate: (userNameInput) => {
       if (userNameInput) {
         return true;
@@ -202,10 +201,11 @@ const init = () => {
 };
 
 // Function call to initialize app
-// init()
-//   .then((answers) => console.log(answers))
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-writeToFile(generateMarkdown(dummy));
+init()
+  .then((answers) => {
+    return writeToFile(generateMarkdown(answers));
+  })
+  .then((writeResponse) => console.log(writeResponse.message))
+  .catch((err) => {
+    console.log(err);
+  });

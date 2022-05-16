@@ -131,7 +131,7 @@ ${renderLicenseBadge(license)}
 ${confirmContributions(contributionsConfirm, contributions)}
 ${confirmTest(testConfirm, tests)}
 ## Questions
-If you have any questions related to this project, feel free to reference my [GitHub](github.com/${userName}) or email me at ${email}
+If you have any questions related to this project, feel free to reference my [GitHub](github.com/${userName}) or send an [email](${email})
 `;
 }
 
