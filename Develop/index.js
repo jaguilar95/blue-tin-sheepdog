@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown.js");
 const { resolve } = require("path");
 const { rejects } = require("assert");
 
@@ -108,7 +109,7 @@ const questions = [
 
   // license (list)
   {
-    type: "checkbox",
+    type: "list",
     name: "license",
     message:
       "Which licenses would you like to select for your project? (Check any that apply)",
@@ -164,14 +165,16 @@ const questions = [
 ];
 
 const dummy = {
-  project: "Horiseon Social Solutions Services Webpage",
+  title: "Horiseon Social Solutions Services Webpage",
   description:
-    "The main webpage of Horiseon Social Soultion Services. Horison specializes in Search Engine Optimization, Online Reputation Management, and Social Media Marketing.",
+    "The main webpage of Horiseon Social Solution Services. Horison specializes in Search Engine Optimization, Online Reputation Management, and Social Media Marketing.",
   installation: "None",
   usage: "Screenshot here",
-  contributionsConfirm: false,
-  testConfirm: false,
-  license: ["MIT"],
+  contributionsConfirm: true,
+  contributions: "contributions",
+  testConfirm: true,
+  tests: "tests",
+  license: "MIT",
   userName: "jaguilar95",
   email: "josue.aguilar1995+horiseon@gmail.com",
   table: true,
@@ -205,4 +208,4 @@ const init = () => {
 //     console.log(err);
 //   });
 
-writeToFile(JSON.stringify(dummy));
+writeToFile(generateMarkdown(dummy));
