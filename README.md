@@ -17,7 +17,7 @@ Clone this repository and run 'npm i' on the command line to install any depende
 
 ## Usage
 
-![Example of Use](https://drive.google.com/file/d/19ONP6vnGKASLK_1UmhaRlIVoQZRbZc_u/view)
+[Example of Use](https://drive.google.com/file/d/19ONP6vnGKASLK_1UmhaRlIVoQZRbZc_u/view)
 
 ## License
 
